@@ -7,8 +7,8 @@ const transporter = nodemailer.createTransport({
  
   service: "gmail",
   auth: {
-    user: process.env.EMAIL_USER, // Default for testing
-    pass: process.env.EMAIL_PASS, // Default for testing - Use App Password for 2FA
+    user: process.env.EMAIL_USER, 
+    pass: process.env.EMAIL_PASS, 
   },
 });
 

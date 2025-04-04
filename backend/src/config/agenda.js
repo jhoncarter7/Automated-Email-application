@@ -1,19 +1,16 @@
 import Agenda from "agenda";
-import transporter from "./nodemailer.js"; // Import the configured transporter
-import 'dotenv/config'; // Ensure environment variables are loaded
+import transporter from "./nodemailer.js"; 
+import 'dotenv/config'; 
 
 // --- Initialize Agenda ---
-// Connect directly using the MongoDB URI
-// Agenda needs to manage its own connection state separate from Mongoose's default connection
-// when initialized this way.
+
 const agenda = new Agenda({
-    db: { address: process.env.MONGODB_URI, collection: 'agendaJobs' }, // Use connection string
-    processEvery: '10 seconds' // Example: How often Agenda checks for jobs
+    db: { address: process.env.MONGODB_URI, collection: 'agendaJobs' }, 
+    processEvery: '10 seconds' 
 });
 
-// --- Define Agenda Job ---
 agenda.define("sendEmail", { priority: 'high', concurrency: 10 }, async (job) => {
-    // Added options example: priority and concurrency
+    
     console.log(`--- Starting job ${job.attrs.name} (${job.attrs._id}) ---`);
     const { emailAddress, subject, emailBody } = job.attrs.data;
 
@@ -75,5 +72,4 @@ const stopAgenda = async () => {
     }
 };
 
-// Export the agenda instance and control functions
 export { agenda, startAgenda, stopAgenda };

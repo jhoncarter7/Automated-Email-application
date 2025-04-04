@@ -5,7 +5,7 @@ const saveAndScheduleSequence = async (req, res) => {
    
     const { nodes, edges, leadEmail, delay } = req.body;
 console.log( "delaylskdnvjskdbvnmsbvdb" ,delay, typeof delay)
-    // Basic validation
+   
     if (!Array.isArray(nodes) || !Array.isArray(edges) || nodes.length === 0) {
         return res.status(400).json({ error: "Missing or invalid nodes or edges in request body" });
     }

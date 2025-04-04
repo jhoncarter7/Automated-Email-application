@@ -212,7 +212,7 @@ const FlowChart = () => {
     console.log("Edges:", edges);
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/sequence/save-schedule`,
+        `/api/sequence/save-schedule`,
         {
           leadEmail: leadEmail,
           delay: delay,
