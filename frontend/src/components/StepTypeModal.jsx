@@ -20,19 +20,19 @@ const StepTypeModal = ({ isOpen, onClose, onSelect }) => {
         <div className="space-y-2">
           <button
             onClick={() => onSelect('lead-source')}
-            className="w-full p-3 text-left border rounded hover:bg-blue-50"
+            className="w-full p-3 text-left border rounded hover:bg-gray-400"
           >
             Lead Source
           </button>
           <button
             onClick={() => onSelect('email')}
-            className="w-full p-3 text-left border rounded hover:bg-blue-50"
+            className="w-full p-3 text-left border rounded hover:bg-gray-400"
           >
             Cold Email
           </button>
           <button
             onClick={() => onSelect('delay')}
-            className="w-full p-3 text-left border rounded hover:bg-blue-50"
+            className="w-full p-3 text-left border rounded hover:bg-gray-400"
           >
             Wait/Delay
           </button>

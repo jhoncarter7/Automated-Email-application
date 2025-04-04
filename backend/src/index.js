@@ -35,21 +35,19 @@ connectDB()
 
     const __dirname = path.resolve();
   
-    const frontendDistPath = path.join(__dirname, "../frontend/dist");
+    const frontendDistPath = path.join(__dirname, "../../frontend/dist");
     console.log(`Serving static files from: ${frontendDistPath}`);
 
     app.use(express.static(frontendDistPath));
 
     app.get("*", (req, res) => {
-      res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+      res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
     });
 
     // --- Start Server ---
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {
       console.log(`Server running successfully on port ${PORT}`);
-      console.log(`Access frontend at: ${allowedOrigin}`);
-      console.log(`API available at: http://localhost:${PORT}/api`);
     });
   })
   .catch((err) => {
