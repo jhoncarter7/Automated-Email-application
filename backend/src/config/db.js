@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
-import 'dotenv/config'; 
+
 
 
 const connectDB = async () => {
+
   const MONGODB_URI = process.env.MONGODB_URI;
   if (!MONGODB_URI) {
     console.error("Error: MONGODB_URI environment variable is not set.");

@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import cors from "cors";
-import "dotenv/config"; 
+
 
 import connectDB from "./config/db.js";
 import { startAgenda, stopAgenda } from "./config/agenda.js"; 
@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json()); 
 
 const allowedOrigin = process.env.ORIGIN || "http://localhost:5173"; 
-console.log("Allowed Origin:", allowedOrigin);
+console.log("Allowed Origin:", process.env.PORT);
 app.use(
   cors()
 );
@@ -35,13 +35,14 @@ connectDB()
 
     const __dirname = path.resolve();
   
-    const frontendDistPath = path.join(__dirname, "../../frontend/dist");
+    const frontendDistPath = path.join(__dirname, "./frontend/dist");
     console.log(`Serving static files from: ${frontendDistPath}`);
 
     app.use(express.static(frontendDistPath));
+    console.log(path.join(__dirname, "./frontend/dist"));
 
     app.get("*", (req, res) => {
-      res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
+      res.sendFile(path.join(__dirname, "./frontend/dist/index.html"));
     });
 
     // --- Start Server ---
