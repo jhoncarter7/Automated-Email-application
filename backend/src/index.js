@@ -41,17 +41,7 @@ connectDB()
     app.use(express.static(frontendDistPath));
 
     app.get("*", (req, res) => {
-      if (req.path.startsWith("/api/")) {
-        return res.status(404).send("API endpoint not found.");
-      }
-      const indexPath = path.join(frontendDistPath, "index.html");
-      res.sendFile(indexPath, (err) => {
-        if (err) {
-          console.error("Error sending index.html:", err);
-
-          res.status(500).send("Server error serving application.");
-        }
-      });
+      res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
     });
 
     // --- Start Server ---
