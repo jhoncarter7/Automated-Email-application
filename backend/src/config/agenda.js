@@ -1,6 +1,6 @@
 import Agenda from "agenda";
 import transporter from "./nodemailer.js"; 
-import 'dotenv/config'; 
+
 
 // --- Initialize Agenda ---
 
